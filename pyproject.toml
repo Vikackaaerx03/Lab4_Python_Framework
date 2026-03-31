@@ -1,0 +1,13 @@
+[project]
+name = "fastapi-orders-api"
+version = "0.1.0"
+description = "REST API for laboratory work 4"
+authors = [{name = "Victoria Roslav"}]
+
+dependencies = [
+    "fastapi",
+    "uvicorn",
+    "sqlalchemy",
+    "jinja2",
+    "python-multipart"
+]
