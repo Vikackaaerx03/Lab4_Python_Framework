@@ -1,0 +1,56 @@
+﻿<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Вхід</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div class="shell">
+        <header class="topbar">
+            <div class="brand">
+                <strong>Геолокація IP</strong>
+                <span>Увійдіть, щоб продовжити</span>
+            </div>
+            <nav class="nav">
+                <a href="index.html">Головна</a>
+                <a href="register.html" data-nav-guest>Реєстрація</a>
+                <a href="dashboard.html">Панель</a>
+                <button class="btn btn-ghost" type="button" data-logout data-nav-auth style="display:none;">Вийти</button>
+            </nav>
+        </header>
+
+        <section class="hero">
+            <article class="card">
+                <h1 class="section-title">Вхід</h1>
+                <p class="hint">Використайте токен акаунта, щоб відкрити перевірку IP та історію запитів.</p>
+                <form id="login-form" class="form">
+                    <div class="field">
+                        <label for="email">Електронна пошта</label>
+                        <input id="email" name="email" type="email" required>
+                    </div>
+                    <div class="field">
+                        <label for="password">Пароль</label>
+                        <input id="password" name="password" type="password" required minlength="6">
+                    </div>
+                    <button class="btn btn-primary" type="submit">Увійти</button>
+                    <div id="login-message" class="message"></div>
+                </form>
+            </article>
+
+            <aside class="card stats">
+                <div class="stat">
+                    <span class="meta">Статус входу</span>
+                    <b data-auth-state>Гість</b>
+                </div>
+                <div class="stat">
+                    <span class="meta">Наступний крок</span>
+                    <b>Відкрити панель</b>
+                </div>
+            </aside>
+        </section>
+    </div>
+    <script src="js/app.js" defer></script>
+</body>
+</html>

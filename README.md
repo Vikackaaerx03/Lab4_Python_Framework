@@ -1,185 +1,105 @@
-# Laboratory Work No. 4
+﻿# IP Geolocation API
 
-## Project Title
-Order REST API
+FastAPI service for laboratory work 4.
 
-## Individual Assignment
-Variant 11
+## Task coverage
 
-Entity: `Order`
+- user registration and authentication
+- IP address validation
+- geolocation lookup for IP addresses
+- saving request history in MongoDB
+- HTTP error handling with custom exceptions
+- simple frontend for working with the API
 
-Fields:
-- `id` - unique identifier
-- `order_number` - order number
-- `customer_name` - customer name
-- `total_price` - total amount
-- `order_date` - order date
+## Project structure
 
-## Laboratory Task
-Tasks for Laboratory Work No. 4:
-
-1. Create a REST API according to the individual assignment.
-2. Implement at least 2 HTTP methods (`GET` and `POST`).
-3. Return data in JSON format.
-4. Test the API in a browser or Postman.
-
-## Implemented Solution
-This project is based on Laboratory Work No. 3 and reuses the same `Order` entity and SQLite database approach.
-
-The new part added for Lab 4 is a REST API built with:
-- `FastAPI`
-- `SQLite`
-- `SQLAlchemy`
-- `Jinja2`
-- `Uvicorn`
-
-## API Features
-- Web interface for browser testing
-- Get all orders
-- Get one order by ID
-- Create a new order
-- Update an order
-- Delete an order
-- Return responses in JSON format
-- Validate incoming data
-- Store data in SQLite database
-
-## Validation Rules
-- `order_number` must contain exactly 3 digits in format `001`
-- `order_number` must be the next available sequential number
-- `customer_name` cannot be empty
-- `total_price` must be greater than `0`
-- `order_date` cannot be in the future
-
-Example:
-- If existing numbers are `001`, `002`, `003`, the next valid number is `004`
-
-## Project Structure
 ```text
-Lab4_Python_Framework/
-  app/
-    main.py
-    database.py
-    models.py
-    schemas.py
-    crud.py
-    router/
-      order.py
-      web.py
-    templates/
-      index.html
-      create.html
-      edit.html
-    static/
-      style.css
-  orders.db
-  pyproject.toml
-  README.md
+app/
+|-- routers/
+|   |-- auth_router.py
+|   |-- lookup_router.py
+|   `-- user_router.py
+|-- services/
+|   |-- auth_service.py
+|   |-- lookup_service.py
+|   `-- user_service.py
+|-- repositories/
+|   |-- auth_repository.py
+|   |-- lookup_repository.py
+|   `-- user_repository.py
+|-- models/
+|   |-- auth_models.py
+|   |-- lookup_models.py
+|   `-- user_models.py
+|-- core/
+|   |-- config.py
+|   |-- security.py
+|   |-- exceptions.py
+|   `-- constants.py
+|-- db/
+|   `-- database.py
+`-- main.py
+frontend/
+|-- css/
+|   `-- style.css
+|-- js/
+|   `-- app.js
+|-- index.html
+|-- login.html
+|-- register.html
+|-- dashboard.html
+`-- history.html
 ```
 
-## Website Pages
-- `/` - main orders page
-- `/create` - create order form
-- `/edit/{order_id}` - edit order form
-- `/delete/{order_id}` - delete order from browser
+## Frontend
 
-## Endpoints
-### `GET /api/orders/`
-Returns all orders in JSON format.
-
-Example response:
-```json
-[
-  {
-    "id": 1,
-    "order_number": "001",
-    "customer_name": "Anna",
-    "total_price": 1200.5,
-    "order_date": "2026-03-31"
-  }
-]
-```
-
-### `GET /api/orders/{order_id}`
-Returns one order by its ID.
-
-### `POST /api/orders/`
-Creates a new order.
-
-Example request body:
-```json
-{
-  "order_number": "001",
-  "customer_name": "Anna Ivanenko",
-  "total_price": 1200.5,
-  "order_date": "2026-03-31"
-}
-```
-
-Example response:
-```json
-{
-  "id": 1,
-  "order_number": "001",
-  "customer_name": "Anna Ivanenko",
-  "total_price": 1200.5,
-  "order_date": "2026-03-31"
-}
-```
-
-### `GET /api/orders/meta/next-number`
-Returns the next valid order number.
-
-Example response:
-```json
-{
-  "next_order_number": "004"
-}
-```
-
-### `PUT /api/orders/{order_id}`
-Updates an existing order.
-
-### `DELETE /api/orders/{order_id}`
-Deletes an order by ID.
-
-## How to Run
-Install dependencies:
-
-```bash
-pip install fastapi uvicorn sqlalchemy jinja2 python-multipart
-```
-
-Run the API:
-
-```bash
-uvicorn app.main:app --reload
-```
+The frontend is served by FastAPI from the `/frontend` path.
 
 Open in browser:
 
-```text
-http://127.0.0.1:8000
+- `http://127.0.0.1:8000/frontend/index.html`
+- `http://127.0.0.1:8000/frontend/login.html`
+- `http://127.0.0.1:8000/frontend/register.html`
+- `http://127.0.0.1:8000/frontend/dashboard.html`
+- `http://127.0.0.1:8000/frontend/history.html`
+
+## Environment variables
+
+```env
+MONGO_URI=mongodb://localhost:27017
+MONGO_DB_NAME=lab4_ip_geo
+SECRET_KEY=change-me
+ACCESS_TOKEN_EXPIRE_MINUTES=60
+GEO_API_URL=https://ip-api.com/json/{ip}
+GEO_TIMEOUT_SECONDS=7
 ```
 
-Website pages:
+## Run
 
-```text
-http://127.0.0.1:8000/
-http://127.0.0.1:8000/create
+```powershell
+cd "C:\Console\visual studio code\python\3 курс\3 курс 2 семестр\Python_framework\Lab4_Python_Framework"
+pip install -r requirements.txt
+uvicorn app.main:app --reload
 ```
 
-Swagger documentation:
+## API endpoints
 
-```text
-http://127.0.0.1:8000/docs
-```
+- `POST /auth/register`
+- `POST /auth/login`
+- `GET /auth/me`
+- `POST /ip/lookup`
+- `GET /ip/history`
+- `GET /`
 
-## Testing
-The API can be tested in:
-- browser for `GET` requests
-- Swagger UI at `/docs`
-- Postman for `GET` and `POST` requests
+## MongoDB collections
 
-## Result
-The developed project implements a REST API for the `Order` entity according to the individual assignment. It supports `GET` and `POST` methods, returns JSON responses, uses SQLite for data storage, and can be tested through the browser, Swagger UI, or Postman.
+- `users`
+- `ip_lookups`
+
+## Notes
+
+- invalid IP addresses return a validation error
+- lookup service errors return an HTTP error through custom exceptions
+- request history stores the user, timestamp, IP, and geolocation data
+- the frontend is a simple static UI built with plain HTML, CSS, and JavaScript
+

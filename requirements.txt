@@ -1,0 +1,6 @@
+﻿fastapi>=0.115
+uvicorn>=0.34
+pymongo>=4.10
+requests>=2.32
+pydantic>=2.10
+pydantic-settings>=2.7

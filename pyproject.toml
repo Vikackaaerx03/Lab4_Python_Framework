@@ -1,13 +1,24 @@
-[project]
-name = "fastapi-orders-api"
-version = "0.1.0"
-description = "REST API for laboratory work 4"
-authors = [{name = "Victoria Roslav"}]
-
+﻿[project]
+name = "lab4-ip-geo-api"
+version = "1.0.0"
+description = "FastAPI REST API for IP geolocation with registration, authentication, and MongoDB history storage"
+authors = [{name = "Codex"}]
+requires-python = ">=3.11"
 dependencies = [
     "fastapi",
     "uvicorn",
-    "sqlalchemy",
-    "jinja2",
-    "python-multipart"
+    "pymongo",
+    "requests",
+    "pydantic",
+    "pydantic-settings"
 ]
+
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools]
+include-package-data = true
+
+[tool.setuptools.packages.find]
+include = ["app*"]

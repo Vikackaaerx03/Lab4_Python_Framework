@@ -1,0 +1,60 @@
+﻿<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Реєстрація</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div class="shell">
+        <header class="topbar">
+            <div class="brand">
+                <strong>Геолокація IP</strong>
+                <span>Створення нового акаунта</span>
+            </div>
+            <nav class="nav">
+                <a href="index.html">Головна</a>
+                <a href="login.html" data-nav-guest>Вхід</a>
+                <a href="dashboard.html">Панель</a>
+                <button class="btn btn-ghost" type="button" data-logout data-nav-auth style="display:none;">Вийти</button>
+            </nav>
+        </header>
+
+        <section class="hero">
+            <article class="card">
+                <h1 class="section-title">Реєстрація</h1>
+                <p class="hint">Створіть профіль, отримайте токен і почніть зберігати історію перевірок.</p>
+                <form id="register-form" class="form">
+                    <div class="field">
+                        <label for="name">Ім'я</label>
+                        <input id="name" name="name" type="text" required minlength="2">
+                    </div>
+                    <div class="field">
+                        <label for="email">Електронна пошта</label>
+                        <input id="email" name="email" type="email" required>
+                    </div>
+                    <div class="field">
+                        <label for="password">Пароль</label>
+                        <input id="password" name="password" type="password" required minlength="6">
+                    </div>
+                    <button class="btn btn-primary" type="submit">Створити акаунт</button>
+                    <div id="register-message" class="message"></div>
+                </form>
+            </article>
+
+            <aside class="card stats">
+                <div class="stat">
+                    <span class="meta">Статус входу</span>
+                    <b data-auth-state>Гість</b>
+                </div>
+                <div class="stat">
+                    <span class="meta">Зберігання</span>
+                    <b>Користувачі MongoDB</b>
+                </div>
+            </aside>
+        </section>
+    </div>
+    <script src="js/app.js" defer></script>
+</body>
+</html>

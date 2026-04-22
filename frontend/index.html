@@ -1,0 +1,62 @@
+﻿<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Геолокація IP</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div class="shell">
+        <header class="topbar">
+            <div class="brand">
+                <strong>Геолокація IP</strong>
+                <span>REST API для геолокації IP</span>
+            </div>
+            <nav class="nav">
+                <a href="login.html" data-nav-guest>Вхід</a>
+                <a href="register.html" data-nav-guest>Реєстрація</a>
+                <a href="dashboard.html">Панель</a>
+                <button class="btn btn-ghost" type="button" data-logout data-nav-auth style="display:none;">Вийти</button>
+            </nav>
+        </header>
+
+        <section class="hero">
+            <article class="card">
+                <div class="meta">FastAPI + MongoDB + автентифікація</div>
+                <h1>Перевіряй IP-адресу та зберігай результат у MongoDB.</h1>
+                <p>
+                    Ця лабораторна демонструє реєстрацію, автентифікацію, захищені API-маршрути,
+                    перевірку IP, валідацію та збереження історії запитів.
+                </p>
+                <div class="hero-actions">
+                    <a class="btn btn-primary" href="register.html">Створити акаунт</a>
+                    <a class="btn btn-ghost" href="login.html">Увійти</a>
+                </div>
+                <div class="pill-row">
+                    <span class="pill">Auth</span>
+                    <span class="pill">Валідація</span>
+                    <span class="pill">MongoDB</span>
+                    <span class="pill">Перевірка IP</span>
+                </div>
+            </article>
+
+            <aside class="card stats">
+                <div class="stat">
+                    <span class="meta">Сесія</span>
+                    <b data-auth-state>Гість</b>
+                </div>
+                <div class="stat">
+                    <span class="meta">Бекенд</span>
+                    <b>FastAPI</b>
+                </div>
+                <div class="stat">
+                    <span class="meta">База даних</span>
+                    <b>MongoDB</b>
+                </div>
+            </aside>
+        </section>
+    </div>
+    <script src="js/app.js" defer></script>
+</body>
+</html>

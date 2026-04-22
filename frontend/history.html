@@ -1,0 +1,47 @@
+﻿<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Історія</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div class="shell" data-dashboard>
+        <header class="topbar">
+            <div class="brand">
+                <strong>Геолокація IP</strong>
+                <span>Історія перевірок</span>
+            </div>
+            <nav class="nav">
+                <a href="index.html">Головна</a>
+                <a href="dashboard.html">Панель</a>
+                <button class="btn btn-ghost" type="button" data-logout data-nav-auth>Вийти</button>
+            </nav>
+        </header>
+
+        <section class="card" style="margin-top:26px;">
+            <h1 class="section-title">Історія</h1>
+            <p class="hint">Окрема сторінка для збережених перевірок IP.</p>
+            <div class="table-wrap">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>IP</th>
+                            <th>Країна</th>
+                            <th>Регіон</th>
+                            <th>Місто</th>
+                            <th>Часовий пояс</th>
+                            <th>Час запиту</th>
+                        </tr>
+                    </thead>
+                    <tbody id="history-body">
+                        <tr><td colspan="6">Завантаження історії...</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+    </div>
+    <script src="js/app.js" defer></script>
+</body>
+</html>
